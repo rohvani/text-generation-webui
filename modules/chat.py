@@ -286,7 +286,7 @@ def impersonate_wrapper(text, start_with, state):
     stopping_strings = get_stopping_strings(state)
 
     yield text + '...'
-    cumulative_reply = text
+    cumulative_reply = text + str(start_with)
     for i in range(state['chat_generation_attempts']):
         reply = None
         for reply in generate_reply(prompt + cumulative_reply, state, eos_token=eos_token, stopping_strings=stopping_strings, is_chat=True):
